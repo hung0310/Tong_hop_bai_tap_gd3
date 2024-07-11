@@ -11,7 +11,7 @@ function UserList() {
     if (userData) {
       setStoredUsers(userData);
     }
-  }, []);
+  }, []); 
 
   const handleUpdate = (id) => {
     navigate(`/user-edit/${id}`);

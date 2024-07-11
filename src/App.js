@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes, Switch } from "react-router-dom";
-import React from "react";
+import React, { useRef } from "react";
 import { HelmetProvider } from 'react-helmet-async';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import DataProvider from "./pages/BaiTap13/DataProvider";
@@ -10,9 +10,14 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 
+import { Toast } from 'primereact/toast';
 import Store from "./pages/BaiTap19/Store";
 import LayoutFrontend from "./components/LayoutFrontend";
-import Image from "./pages/BaiTap31/Image";
+import ToastReact from "./pages/BaiTap41/ToastReact";
+// import SelectForm from "./pages/BaiTap38/SelectForm";
+// import InputForm from "./pages/BaiTap39/InputForm";
+// import StudentList from "./pages/BaiTap37/StudentList";
+// import Image from "./pages/BaiTap31/Image";
 // import LoadImage from "./pages/BaiTap30/LoadImage";
 // import LoginPage from "./pages/BaiTap30/LoginPage";
 // import LoadImage from "./pages/BaiTap27/LoadImage";
@@ -52,10 +57,14 @@ import Image from "./pages/BaiTap31/Image";
 // import LoadImage from './pages/BaiTap7/LoadImage';
 
 function App() {
+
+  const toast = useRef(null);
+
   return (
     // <Provider store={Store}>
-    <HelmetProvider>
+    // <HelmetProvider>
       <Router>
+        <Toast ref={toast} />
         <Routes>
           {/* Bài tập 3 4 5 8
           <Route path="/" element={<LoginPage />} />
@@ -96,11 +105,19 @@ function App() {
           </Route> */}
           {/* <Route path="/" element={<MultiLanguage />} /> */}
 
-          <Route path="/" element={<Image />} />
+          {/* <Route path="/" element={<Image />} /> */}
+
+          {/* <Route path="/" element={<StudentList />} /> */}
+
+          {/* <Route path="/" element={<SelectForm />} /> */}
+
+          {/* <Route path="/" element={<InputForm />} /> */}
+
+          <Route path='/' element={<ToastReact toast={toast} />} />
 
         </Routes>
       </Router>      
-    </HelmetProvider>
+    // </HelmetProvider>
 
     // </Provider>
   );

@@ -13,7 +13,7 @@ const SigninSchema = Yup.object().shape({
   age: Yup.number()
     .required('Tuổi không thể trống')
     .positive('Tuổi phải là số dương')
-    .integer('Tuổi phải là số nguyên')
+    .integer('Tuổi phải là số nguyên') 
     .min(1, 'Tuổi phải lớn hơn 0'),
   address: Yup.string().required('Địa chỉ không thể trống').max(20, 'Địa chỉ không được vượt quá 20 ký tự'),
 });

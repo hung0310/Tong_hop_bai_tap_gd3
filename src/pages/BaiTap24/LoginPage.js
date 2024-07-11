@@ -43,7 +43,7 @@ function LoginPage() {
         maxWidth: "1000px",
         margin: "0 auto"
       }}>
-        <CRow>
+        <CRow> 
           <CCol lg={6} md={12} className='px-5'>
             <CForm onSubmit={handleSubmit}>
               <h1>Đăng nhập</h1>
