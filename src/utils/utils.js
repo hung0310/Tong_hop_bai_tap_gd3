@@ -2,21 +2,18 @@ export const showToast = (toastRef, severity, summary, detail) => {
     toastRef.current.show({ severity, summary, detail });
 };
 
-export const showCustomToast = (toastRef, type, summary, detail) => {
-    switch(type) {
-        case 'success':
-            showToast(toastRef, 'success', summary, detail);
-            break;
-        case 'info':
-            showToast(toastRef, 'info', summary, detail);
-            break;
-        case 'warning':
-            showToast(toastRef, 'warn', summary, detail);
-            break;
-        case 'error':
-            showToast(toastRef, 'error', summary, detail);
-            break;
-        default: 
-            alert('Not found');
-    }
+export const showSuccessToast = (toastRef, summary, detail) => {
+    showToast(toastRef, 'success', summary, detail);
+};
+
+export const showInfoToast = (toastRef, summary, detail) => {
+    showToast(toastRef, 'info', summary, detail);
+};
+
+export const showWarningToast = (toastRef, summary, detail) => {
+    showToast(toastRef, 'warn', summary, detail);
+};
+
+export const showErrorToast = (toastRef, summary, detail) => {
+    showToast(toastRef, 'error', summary, detail);
 };

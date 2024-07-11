@@ -13,10 +13,11 @@ import 'primeflex/primeflex.css';
 import { Toast } from 'primereact/toast';
 import Store from "./pages/BaiTap19/Store";
 import LayoutFrontend from "./components/LayoutFrontend";
+import StudentList from "./pages/BaiTap44/StudentList";
 // import ToastReact from "./pages/BaiTap41/ToastReact";
-import InputForm from "./pages/BaiTap42/InputForm";
-import PageParent from "./pages/BaiTap43/PageParent";
-import PageParent2 from "./pages/BaiTap43/PageParent2";
+// import InputForm from "./pages/BaiTap42/InputForm";
+// import PageParent from "./pages/BaiTap43/PageParent";
+// import PageParent2 from "./pages/BaiTap43/PageParent2";
 // import SelectForm from "./pages/BaiTap38/SelectForm";
 // import InputForm from "./pages/BaiTap39/InputForm";
 // import StudentList from "./pages/BaiTap37/StudentList";
@@ -61,13 +62,13 @@ import PageParent2 from "./pages/BaiTap43/PageParent2";
 
 function App() {
 
-  // const toast = useRef(null);
+  const toast = useRef(null);
 
   return (
     // <Provider store={Store}>
-    // <HelmetProvider>
+    <HelmetProvider>
       <Router>
-        {/* <Toast ref={toast} /> */}
+        <Toast ref={toast} />
         <Routes>
           {/* Bài tập 3 4 5 8
           <Route path="/" element={<LoginPage />} />
@@ -120,14 +121,16 @@ function App() {
 
           {/* <Route path='/' element={<InputForm />} /> */}
 
-          <Route path="/" element={<LayoutFrontend />}>
+          {/* <Route path="/" element={<LayoutFrontend />}>
             <Route index element={<PageParent />} />
             <Route path='pageParent2' element={<PageParent2 />} />
-          </Route>
+          </Route> */}
+
+          <Route path='/' element={<StudentList />} />
 
         </Routes>
       </Router>      
-    // </HelmetProvider>
+    </HelmetProvider>
 
     // </Provider>
   );
