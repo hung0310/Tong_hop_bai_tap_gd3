@@ -15,6 +15,8 @@ import Store from "./pages/BaiTap19/Store";
 import LayoutFrontend from "./components/LayoutFrontend";
 // import ToastReact from "./pages/BaiTap41/ToastReact";
 import InputForm from "./pages/BaiTap42/InputForm";
+import PageParent from "./pages/BaiTap43/PageParent";
+import PageParent2 from "./pages/BaiTap43/PageParent2";
 // import SelectForm from "./pages/BaiTap38/SelectForm";
 // import InputForm from "./pages/BaiTap39/InputForm";
 // import StudentList from "./pages/BaiTap37/StudentList";
@@ -116,7 +118,12 @@ function App() {
 
           {/* <Route path='/' element={<ToastReact toast={toast} />} /> */}
 
-          <Route path='/' element={<InputForm />} />
+          {/* <Route path='/' element={<InputForm />} /> */}
+
+          <Route path="/" element={<LayoutFrontend />}>
+            <Route index element={<PageParent />} />
+            <Route path='pageParent2' element={<PageParent2 />} />
+          </Route>
 
         </Routes>
       </Router>      
