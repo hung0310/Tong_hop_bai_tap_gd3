@@ -13,7 +13,8 @@ import 'primeflex/primeflex.css';
 import { Toast } from 'primereact/toast';
 import Store from "./pages/BaiTap19/Store";
 import LayoutFrontend from "./components/LayoutFrontend";
-import ToastReact from "./pages/BaiTap41/ToastReact";
+// import ToastReact from "./pages/BaiTap41/ToastReact";
+import InputForm from "./pages/BaiTap42/InputForm";
 // import SelectForm from "./pages/BaiTap38/SelectForm";
 // import InputForm from "./pages/BaiTap39/InputForm";
 // import StudentList from "./pages/BaiTap37/StudentList";
@@ -58,13 +59,13 @@ import ToastReact from "./pages/BaiTap41/ToastReact";
 
 function App() {
 
-  const toast = useRef(null);
+  // const toast = useRef(null);
 
   return (
     // <Provider store={Store}>
     // <HelmetProvider>
       <Router>
-        <Toast ref={toast} />
+        {/* <Toast ref={toast} /> */}
         <Routes>
           {/* Bài tập 3 4 5 8
           <Route path="/" element={<LoginPage />} />
@@ -113,7 +114,9 @@ function App() {
 
           {/* <Route path="/" element={<InputForm />} /> */}
 
-          <Route path='/' element={<ToastReact toast={toast} />} />
+          {/* <Route path='/' element={<ToastReact toast={toast} />} /> */}
+
+          <Route path='/' element={<InputForm />} />
 
         </Routes>
       </Router>      
