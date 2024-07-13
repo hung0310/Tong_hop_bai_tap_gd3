@@ -4,16 +4,16 @@ import { HelmetProvider } from 'react-helmet-async';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import DataProvider from "./pages/BaiTap13/DataProvider";
 import { Provider } from 'react-redux';
-
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 
-import { Toast } from 'primereact/toast';
-import Store from "./pages/BaiTap19/Store";
-import LayoutFrontend from "./components/LayoutFrontend";
-import StudentList from "./pages/BaiTap44/StudentList";
+// import { Toast } from 'primereact/toast';
+import Store from "./pages/BaiTap45/Store";
+import ScrollToTop from "react-scroll-to-top";
+// import LayoutFrontend from "./components/LayoutFrontend";
+import StudentList from "./pages/BaiTap45/StudentList";
 // import ToastReact from "./pages/BaiTap41/ToastReact";
 // import InputForm from "./pages/BaiTap42/InputForm";
 // import PageParent from "./pages/BaiTap43/PageParent";
@@ -62,13 +62,13 @@ import StudentList from "./pages/BaiTap44/StudentList";
 
 function App() {
 
-  const toast = useRef(null);
+  // const toast = useRef(null);
 
   return (
-    // <Provider store={Store}>
+    <Provider store={Store}>
     <HelmetProvider>
       <Router>
-        <Toast ref={toast} />
+        {/* <Toast ref={toast} /> */}
         <Routes>
           {/* Bài tập 3 4 5 8
           <Route path="/" element={<LoginPage />} />
@@ -126,13 +126,16 @@ function App() {
             <Route path='pageParent2' element={<PageParent2 />} />
           </Route> */}
 
-          <Route path='/' element={<StudentList />} />
+          {/* <Route path='/' element={<StudentList />} /> */}
+
+            <Route path='/' element={<StudentList />} />
 
         </Routes>
+        <ScrollToTop smooth />
       </Router>      
     </HelmetProvider>
 
-    // </Provider>
+    </Provider>
   );
 }
 
