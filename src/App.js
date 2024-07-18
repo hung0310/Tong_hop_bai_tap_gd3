@@ -5,15 +5,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import DataProvider from "./pages/BaiTap13/DataProvider";
 import { Provider } from 'react-redux';
 import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/themes/lara-light-cyan/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
-
+import { ToastProvider } from "./hooks/ToastProvider";
 // import { Toast } from 'primereact/toast';
-import Store from "./pages/BaiTap45/Store";
+// import Store from "./pages/BaiTap45/Store";
 import ScrollToTop from "react-scroll-to-top";
 // import LayoutFrontend from "./components/LayoutFrontend";
-import StudentList from "./pages/BaiTap45/StudentList";
+// import StudentList from "./pages/BaiTap45/StudentList";
+import ToastReact from "./pages/BaiTap46/ToastReact";
+// import Calculate from "./pages/BaiTap47/Calculate";
+import SidebarEx from "./pages/BaiTap48/SidebarEx";
 // import ToastReact from "./pages/BaiTap41/ToastReact";
 // import InputForm from "./pages/BaiTap42/InputForm";
 // import PageParent from "./pages/BaiTap43/PageParent";
@@ -65,77 +69,85 @@ function App() {
   // const toast = useRef(null);
 
   return (
-    <Provider store={Store}>
+    // <Provider store={Store}>
     <HelmetProvider>
       <Router>
-        {/* <Toast ref={toast} /> */}
-        <Routes>
-          {/* Bài tập 3 4 5 8
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/user-list" element={<UserList />} />
-          <Route path="/user-edit/:id" element={<EditUser />} />
-          <Route path="/signin" element={<SignInPage />} /> */}
+        <ToastProvider>
+          {/* <Toast ref={toast} /> */}
+          <Routes>
+            {/* Bài tập 3 4 5 8
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/user-list" element={<UserList />} />
+            <Route path="/user-edit/:id" element={<EditUser />} />
+            <Route path="/signin" element={<SignInPage />} /> */}
 
-          {/* Bài tập 6
-          <Route path="/" element={<LoginWithGG />} /> */}
+            {/* Bài tập 6
+            <Route path="/" element={<LoginWithGG />} /> */}
 
-          {/* Bài tập 7
-          <Route path="/" element={<LoadImage />} /> */}
+            {/* Bài tập 7
+            <Route path="/" element={<LoadImage />} /> */}
 
-          {/* <Route path="/" element={<Component_Parent />} /> */}
+            {/* <Route path="/" element={<Component_Parent />} /> */}
 
-          {/* <Route path="/" element={<Parent />} /> */}
+            {/* <Route path="/" element={<Parent />} /> */}
 
-          {/* <Route path="/" element={<LoginPage />} />
-          <Route path="/Dashboard" element={<Dashboard />} /> */}
+            {/* <Route path="/" element={<LoginPage />} />
+            <Route path="/Dashboard" element={<Dashboard />} /> */}
 
-          {/* Bài tập 22
-          LayoutFrontend routes
-          <Route path="/" element={<LayoutFrontend />}>
-            <Route index element={<LoginPage />} />
-            <Route path="SignIn" element={<SignInPage />} />
-          </Route>
+            {/* Bài tập 22
+            LayoutFrontend routes
+            <Route path="/" element={<LayoutFrontend />}>
+              <Route index element={<LoginPage />} />
+              <Route path="SignIn" element={<SignInPage />} />
+            </Route>
 
-          LayoutBackend routes
-          <Route path="/Dashboard" element={<LayoutBackend />}>
-            <Route index element={<Dashboard />} />
-            <Route path="Profile" element={<Profile />} />
-          </Route>
+            LayoutBackend routes
+            <Route path="/Dashboard" element={<LayoutBackend />}>
+              <Route index element={<Dashboard />} />
+              <Route path="Profile" element={<Profile />} />
+            </Route>
 
-          <Route path="*" element={<NotFound />} /> */}
+            <Route path="*" element={<NotFound />} /> */}
 
-          {/* <Route path="/" element={<LayoutFrontend />}>
-            <Route index element={<LoginPage />} />
-          </Route> */}
-          {/* <Route path="/" element={<MultiLanguage />} /> */}
+            {/* <Route path="/" element={<LayoutFrontend />}>
+              <Route index element={<LoginPage />} />
+            </Route> */}
+            {/* <Route path="/" element={<MultiLanguage />} /> */}
 
-          {/* <Route path="/" element={<Image />} /> */}
+            {/* <Route path="/" element={<Image />} /> */}
 
-          {/* <Route path="/" element={<StudentList />} /> */}
+            {/* <Route path="/" element={<StudentList />} /> */}
 
-          {/* <Route path="/" element={<SelectForm />} /> */}
+            {/* <Route path="/" element={<SelectForm />} /> */}
 
-          {/* <Route path="/" element={<InputForm />} /> */}
+            {/* <Route path="/" element={<InputForm />} /> */}
 
-          {/* <Route path='/' element={<ToastReact toast={toast} />} /> */}
+            {/* <Route path='/' element={<ToastReact toast={toast} />} /> */}
 
-          {/* <Route path='/' element={<InputForm />} /> */}
+            {/* <Route path='/' element={<InputForm />} /> */}
 
-          {/* <Route path="/" element={<LayoutFrontend />}>
-            <Route index element={<PageParent />} />
-            <Route path='pageParent2' element={<PageParent2 />} />
-          </Route> */}
+            {/* <Route path="/" element={<LayoutFrontend />}>
+              <Route index element={<PageParent />} />
+              <Route path='pageParent2' element={<PageParent2 />} />
+            </Route> */}
 
-          {/* <Route path='/' element={<StudentList />} /> */}
+            {/* <Route path='/' element={<StudentList />} /> */}
 
-            <Route path='/' element={<StudentList />} />
+            {/* <Route path='/' element={<StudentList />} /> */}
 
-        </Routes>
-        <ScrollToTop smooth />
+            <Route path='/' element={<ToastReact />} />
+
+            {/* <Route path='/' element={<Calculate />} /> */}
+
+            {/* <Route path="/" element={<SidebarEx />} /> */}
+
+          </Routes>
+          <ScrollToTop smooth />
+        </ToastProvider>
       </Router>      
     </HelmetProvider>
 
-    </Provider>
+    // </Provider>
   );
 }
 
