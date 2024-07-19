@@ -1,13 +1,19 @@
-import { useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
+
+export const CalculateContext = createContext();
 
 export const useCalculate = () => {
+    return useContext(CalculateContext);
+}
+
+export const CalculateProvider = ({ children }) => {
     const [result, setResult] = useState(0);
 
     const addCalculate = (a, b) => {
         const sum = a + b;
         setResult(sum);
         return sum;
-    };
+    }; 
 
     const subtractCalculate = (a, b) => {
         const sub = a - b;
@@ -31,5 +37,9 @@ export const useCalculate = () => {
         return devide;
     };
 
-    return { result, addCalculate, subtractCalculate, multiplyCalculate, devideCalculate };
+    return (
+        <CalculateContext.Provider value={{result, addCalculate, subtractCalculate, multiplyCalculate, devideCalculate}}>
+            {children}
+        </CalculateContext.Provider>
+    );
 };

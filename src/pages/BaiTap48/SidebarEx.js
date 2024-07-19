@@ -29,7 +29,7 @@ const SidebarEx = () => {
     const showHeadless = (customHeader) => {
         setFullScreen(false);
         setHeader(customHeader);
-        setIcons(null);
+        setIcons(null); 
         setDisplay(false);
         setDisplayHeadless(true);
         show();

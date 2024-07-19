@@ -11,12 +11,13 @@ import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import { ToastProvider } from "./hooks/ToastProvider";
 // import { Toast } from 'primereact/toast';
-// import Store from "./pages/BaiTap45/Store";
+// import Store from "./pages/BaiTap45/Store"; 
 import ScrollToTop from "react-scroll-to-top";
 // import LayoutFrontend from "./components/LayoutFrontend";
 // import StudentList from "./pages/BaiTap45/StudentList";
 import ToastReact from "./pages/BaiTap46/ToastReact";
-// import Calculate from "./pages/BaiTap47/Calculate";
+import Calculate from "./pages/BaiTap47/Calculate";
+import { CalculateProvider } from "./hooks/CalculateProvider";
 import SidebarEx from "./pages/BaiTap48/SidebarEx";
 // import ToastReact from "./pages/BaiTap41/ToastReact";
 // import InputForm from "./pages/BaiTap42/InputForm";
@@ -72,7 +73,8 @@ function App() {
     // <Provider store={Store}>
     <HelmetProvider>
       <Router>
-        <ToastProvider>
+        {/* <ToastProvider> */}
+        <CalculateProvider>
           {/* <Toast ref={toast} /> */}
           <Routes>
             {/* Bài tập 3 4 5 8
@@ -135,15 +137,16 @@ function App() {
 
             {/* <Route path='/' element={<StudentList />} /> */}
 
-            <Route path='/' element={<ToastReact />} />
+            {/* <Route path='/' element={<ToastReact />} /> */}
 
-            {/* <Route path='/' element={<Calculate />} /> */}
+            <Route path='/' element={<Calculate />} />
 
             {/* <Route path="/" element={<SidebarEx />} /> */}
 
           </Routes>
           <ScrollToTop smooth />
-        </ToastProvider>
+        {/* </ToastProvider> */}
+        </CalculateProvider>
       </Router>      
     </HelmetProvider>
 

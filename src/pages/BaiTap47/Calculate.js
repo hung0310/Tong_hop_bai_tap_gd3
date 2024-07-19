@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useCalculate } from '../../hooks/useCalculate';
+import { useCalculate } from '../../hooks/CalculateProvider';
 import { CFormInput, CButton, CFormLabel } from '@coreui/react';
 
 const Calculate = () => {
