@@ -18,6 +18,7 @@ import ScrollToTop from "react-scroll-to-top";
 import ToastReact from "./pages/BaiTap46/ToastReact";
 import Calculate from "./pages/BaiTap47/Calculate";
 import { CalculateProvider } from "./hooks/CalculateProvider";
+import { SidebarProvider } from "./hooks/SidebarProvider";
 import SidebarEx from "./pages/BaiTap48/SidebarEx";
 // import ToastReact from "./pages/BaiTap41/ToastReact";
 // import InputForm from "./pages/BaiTap42/InputForm";
@@ -74,7 +75,8 @@ function App() {
     <HelmetProvider>
       <Router>
         {/* <ToastProvider> */}
-        <CalculateProvider>
+        {/* <CalculateProvider> */}
+        <SidebarProvider>
           {/* <Toast ref={toast} /> */}
           <Routes>
             {/* Bài tập 3 4 5 8
@@ -139,14 +141,15 @@ function App() {
 
             {/* <Route path='/' element={<ToastReact />} /> */}
 
-            <Route path='/' element={<Calculate />} />
+            {/* <Route path='/' element={<Calculate />} /> */}
 
-            {/* <Route path="/" element={<SidebarEx />} /> */}
+            <Route path="/" element={<SidebarEx />} />
 
           </Routes>
           <ScrollToTop smooth />
         {/* </ToastProvider> */}
-        </CalculateProvider>
+        {/* </CalculateProvider> */}
+        </SidebarProvider>
       </Router>      
     </HelmetProvider>
 

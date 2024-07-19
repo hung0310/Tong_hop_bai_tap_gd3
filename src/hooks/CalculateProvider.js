@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-export const CalculateContext = createContext();
+export const CalculateContext = createContext(); 
 
 export const useCalculate = () => {
     return useContext(CalculateContext);

@@ -1,12 +1,9 @@
 import React, { useState, useRef } from 'react';
-import useSidebar from '../../hooks/useSidebar';
+import { useSidebar } from '../../hooks/SidebarProvider';
 import { Button } from 'primereact/button';
 import { Avatar } from 'primereact/avatar';
 import { Ripple } from 'primereact/ripple';
 import { StyleClass } from 'primereact/styleclass';
-import 'primereact/resources/themes/saga-blue/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
 
 const SidebarEx = () => {
     const [SidebarComponent, show, setPosition, setFullScreen, setHeader, setIcons] = useSidebar();

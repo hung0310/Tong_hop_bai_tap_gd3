@@ -1,7 +1,13 @@
-import { useState, useCallback } from 'react';
+import React, { createContext, useContext, useState, useCallback } from 'react';
 import { Sidebar } from 'primereact/sidebar';
 
-const useSidebar = () => {
+export const SidebarContext = createContext();
+
+export const useSidebar = () => {
+    return useContext(SidebarContext);
+};
+
+export const SidebarProvider = ({ children }) => {
     const [visible, setVisible] = useState(false);
     const [pos, setPos] = useState('left');
     const [fullscr, setFullScr] = useState(false);
@@ -34,7 +40,9 @@ const useSidebar = () => {
         );
     };
 
-    return [SidebarComponent, show, setPosition, setFullScreen, setHeader, setIcon];
+    return (
+        <SidebarContext.Provider value={[SidebarComponent, show, setPosition, setFullScreen, setHeader, setIcon]}>
+            {children}
+        </SidebarContext.Provider>
+    );
 };
-
-export default useSidebar;
