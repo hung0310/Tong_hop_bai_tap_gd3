@@ -13,13 +13,14 @@ import { ToastProvider } from "./hooks/ToastProvider";
 // import { Toast } from 'primereact/toast';
 // import Store from "./pages/BaiTap45/Store"; 
 import ScrollToTop from "react-scroll-to-top";
+import AxiosReact from './pages/BaiTap51/AxiosReact';
 // import LayoutFrontend from "./components/LayoutFrontend";
 // import StudentList from "./pages/BaiTap45/StudentList";
-import ToastReact from "./pages/BaiTap46/ToastReact";
-import Calculate from "./pages/BaiTap47/Calculate";
-import { CalculateProvider } from "./hooks/CalculateProvider";
-import { SidebarProvider } from "./hooks/SidebarProvider";
-import SidebarEx from "./pages/BaiTap48/SidebarEx";
+// import ToastReact from "./pages/BaiTap46/ToastReact";
+// import Calculate from "./pages/BaiTap47/Calculate";
+// import { CalculateProvider } from "./hooks/CalculateProvider";
+// import { SidebarProvider } from "./hooks/SidebarProvider";
+// import SidebarEx from "./pages/BaiTap48/SidebarEx";
 // import ToastReact from "./pages/BaiTap41/ToastReact";
 // import InputForm from "./pages/BaiTap42/InputForm";
 // import PageParent from "./pages/BaiTap43/PageParent";
@@ -76,7 +77,7 @@ function App() {
       <Router>
         {/* <ToastProvider> */}
         {/* <CalculateProvider> */}
-        <SidebarProvider>
+        {/* <SidebarProvider> */}
           {/* <Toast ref={toast} /> */}
           <Routes>
             {/* Bài tập 3 4 5 8
@@ -143,13 +144,15 @@ function App() {
 
             {/* <Route path='/' element={<Calculate />} /> */}
 
-            <Route path="/" element={<SidebarEx />} />
+            {/* <Route path="/" element={<SidebarEx />} /> */}
+
+            <Route path="/" element={<AxiosReact />} />
 
           </Routes>
           <ScrollToTop smooth />
         {/* </ToastProvider> */}
         {/* </CalculateProvider> */}
-        </SidebarProvider>
+        {/* </SidebarProvider> */}
       </Router>      
     </HelmetProvider>
 
