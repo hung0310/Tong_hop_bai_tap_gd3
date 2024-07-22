@@ -13,7 +13,7 @@ import { ToastProvider } from "./hooks/ToastProvider";
 // import { Toast } from 'primereact/toast';
 // import Store from "./pages/BaiTap45/Store"; 
 import ScrollToTop from "react-scroll-to-top";
-import AxiosReact from './pages/BaiTap51/AxiosReact';
+import AxiosReact from './pages/BaiTap52/AxiosReact';
 // import LayoutFrontend from "./components/LayoutFrontend";
 // import StudentList from "./pages/BaiTap45/StudentList";
 // import ToastReact from "./pages/BaiTap46/ToastReact";
