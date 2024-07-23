@@ -3,14 +3,15 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { getData } from '../../Apis/APIEx52';
 
-const AxiosReact = () => {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+const useGetData = () => {
+    const [data, setData] = useState();
+    const [loading, setLoading] = useState(false); 
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
         setLoading(true);
+        setError(false);
         try {
             const result = await getData();
             setData(result);
@@ -23,6 +24,13 @@ const AxiosReact = () => {
 
       fetchData();
     }, []);
+
+    return { data, loading, error };
+}
+
+const AxiosReact = () => {
+
+    const { data, loading, error } = useGetData();
 
     if (error) {
         return <div className='d-flex justify-content-center align-items-center fw-bold display-6 mt-5'>Error: {error.message}</div>;
