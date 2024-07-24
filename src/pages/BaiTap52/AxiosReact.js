@@ -4,7 +4,7 @@ import { Column } from 'primereact/column';
 import { getData } from '../../Apis/APIEx52';
 
 const useGetData = () => {
-    const [data, setData] = useState();
+    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false); 
     const [error, setError] = useState(false);
 
