@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { getData } from '../../Apis/APIEx52';
-
+import { getDataBlog } from '../../Apis/getDataAPI';
+ 
 const useGetData = () => {
-    const [data, setData] = useState();
+    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false); 
     const [error, setError] = useState(false);
 
@@ -13,7 +13,7 @@ const useGetData = () => {
         setLoading(true);
         setError(false);
         try {
-            const result = await getData();
+            const result = await getDataBlog();
             setData(result);
         } catch (err) {
             setError(err);

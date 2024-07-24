@@ -13,10 +13,11 @@ import { ToastProvider } from "./hooks/ToastProvider";
 // import { Toast } from 'primereact/toast';
 // import Store from "./pages/BaiTap45/Store"; 
 import ScrollToTop from "react-scroll-to-top";
-import AxiosReact from './pages/BaiTap52/AxiosReact';
+import LoginForm from "./pages/BaiTap54/LoginForm";
+// import AxiosReact from './pages/BaiTap52/AxiosReact';
 // import LayoutFrontend from "./components/LayoutFrontend";
 // import StudentList from "./pages/BaiTap45/StudentList";
-// import ToastReact from "./pages/BaiTap46/ToastReact";
+import ToastReact from "./pages/BaiTap46/ToastReact";
 // import Calculate from "./pages/BaiTap47/Calculate";
 // import { CalculateProvider } from "./hooks/CalculateProvider";
 // import { SidebarProvider } from "./hooks/SidebarProvider";
@@ -69,13 +70,13 @@ import AxiosReact from './pages/BaiTap52/AxiosReact';
 
 function App() {
 
-  // const toast = useRef(null);
+  const toast = useRef(null);
 
   return (
     // <Provider store={Store}>
     <HelmetProvider>
       <Router>
-        {/* <ToastProvider> */}
+        <ToastProvider>
         {/* <CalculateProvider> */}
         {/* <SidebarProvider> */}
           {/* <Toast ref={toast} /> */}
@@ -146,11 +147,13 @@ function App() {
 
             {/* <Route path="/" element={<SidebarEx />} /> */}
 
-            <Route path="/" element={<AxiosReact />} />
+            {/* <Route path="/" element={<AxiosReact />} /> */}
+
+            <Route path="/" element={<LoginForm />} />
 
           </Routes>
           <ScrollToTop smooth />
-        {/* </ToastProvider> */}
+        </ToastProvider>
         {/* </CalculateProvider> */}
         {/* </SidebarProvider> */}
       </Router>      
