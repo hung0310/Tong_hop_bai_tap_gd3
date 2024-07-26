@@ -1,21 +1,28 @@
-import { BrowserRouter as Router, Route, Routes, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Switch,
+} from "react-router-dom";
 import React, { useRef } from "react";
-import { HelmetProvider } from 'react-helmet-async';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { HelmetProvider } from "react-helmet-async";
+import "bootstrap/dist/css/bootstrap.min.css";
 // import DataProvider from "./pages/BaiTap13/DataProvider";
-import { Provider } from 'react-redux';
-import 'primereact/resources/themes/saga-blue/theme.css';
-import 'primereact/resources/themes/lara-light-cyan/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
-import 'primeflex/primeflex.css';
+import { Provider } from "react-redux";
+import "primereact/resources/themes/saga-blue/theme.css";
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import "primeflex/primeflex.css";
 import { ToastProvider } from "./hooks/ToastProvider";
 // import { Toast } from 'primereact/toast';
-// import Store from "./pages/BaiTap45/Store"; 
+// import Store from "./pages/BaiTap45/Store";
 import ScrollToTop from "react-scroll-to-top";
-import LoginForm from "./pages/BaiTap54/LoginForm";
+import LoginForm from "./pages/BaiTap55/LoginForm";
+import Dashboard from "./pages/BaiTap55/Dashboard";
+import Store from "./pages/BaiTap55/Store";
 // import AxiosReact from './pages/BaiTap52/AxiosReact';
-// import LayoutFrontend from "./components/LayoutFrontend";
+import LayoutFrontend from "./components/LayoutFrontend";
 // import StudentList from "./pages/BaiTap45/StudentList";
 import ToastReact from "./pages/BaiTap46/ToastReact";
 // import Calculate from "./pages/BaiTap47/Calculate";
@@ -40,7 +47,7 @@ import ToastReact from "./pages/BaiTap46/ToastReact";
 // import LoginPage from "./pages/BaiTap22/LoginPage";
 // import LoginPage from "./pages/BaiTap19/LoginPage";
 // import SignInPage from "./pages/BaiTap19/SignInPage";
-// import LayoutBackend from "./components/LayoutBackend";
+import LayoutBackend from "./components/LayoutBackend";
 // import Dashboard from "./pages/BaiTap19/Dashboard";
 // import Profile from "./pages/BaiTap19/Profile";
 // import NotFound from "./pages/BaiTap20/NotFound";
@@ -69,38 +76,37 @@ import ToastReact from "./pages/BaiTap46/ToastReact";
 // import LoadImage from './pages/BaiTap7/LoadImage';
 
 function App() {
-
   const toast = useRef(null);
 
   return (
-    // <Provider store={Store}>
-    <HelmetProvider>
-      <Router>
-        <ToastProvider>
-        {/* <CalculateProvider> */}
-        {/* <SidebarProvider> */}
-          {/* <Toast ref={toast} /> */}
-          <Routes>
-            {/* Bài tập 3 4 5 8
+    <Provider store={Store}>
+      <HelmetProvider>
+        <Router>
+          <ToastProvider>
+            {/* <CalculateProvider> */}
+            {/* <SidebarProvider> */}
+            {/* <Toast ref={toast} /> */}
+            <Routes>
+              {/* Bài tập 3 4 5 8
             <Route path="/" element={<LoginPage />} />
             <Route path="/user-list" element={<UserList />} />
             <Route path="/user-edit/:id" element={<EditUser />} />
             <Route path="/signin" element={<SignInPage />} /> */}
 
-            {/* Bài tập 6
+              {/* Bài tập 6
             <Route path="/" element={<LoginWithGG />} /> */}
 
-            {/* Bài tập 7
+              {/* Bài tập 7
             <Route path="/" element={<LoadImage />} /> */}
 
-            {/* <Route path="/" element={<Component_Parent />} /> */}
+              {/* <Route path="/" element={<Component_Parent />} /> */}
 
-            {/* <Route path="/" element={<Parent />} /> */}
+              {/* <Route path="/" element={<Parent />} /> */}
 
-            {/* <Route path="/" element={<LoginPage />} />
+              {/* <Route path="/" element={<LoginPage />} />
             <Route path="/Dashboard" element={<Dashboard />} /> */}
 
-            {/* Bài tập 22
+              {/* Bài tập 22
             LayoutFrontend routes
             <Route path="/" element={<LayoutFrontend />}>
               <Route index element={<LoginPage />} />
@@ -115,51 +121,57 @@ function App() {
 
             <Route path="*" element={<NotFound />} /> */}
 
-            {/* <Route path="/" element={<LayoutFrontend />}>
+              {/* <Route path="/" element={<LayoutFrontend />}>
               <Route index element={<LoginPage />} />
             </Route> */}
-            {/* <Route path="/" element={<MultiLanguage />} /> */}
+              {/* <Route path="/" element={<MultiLanguage />} /> */}
 
-            {/* <Route path="/" element={<Image />} /> */}
+              {/* <Route path="/" element={<Image />} /> */}
 
-            {/* <Route path="/" element={<StudentList />} /> */}
+              {/* <Route path="/" element={<StudentList />} /> */}
 
-            {/* <Route path="/" element={<SelectForm />} /> */}
+              {/* <Route path="/" element={<SelectForm />} /> */}
 
-            {/* <Route path="/" element={<InputForm />} /> */}
+              {/* <Route path="/" element={<InputForm />} /> */}
 
-            {/* <Route path='/' element={<ToastReact toast={toast} />} /> */}
+              {/* <Route path='/' element={<ToastReact toast={toast} />} /> */}
 
-            {/* <Route path='/' element={<InputForm />} /> */}
+              {/* <Route path='/' element={<InputForm />} /> */}
 
-            {/* <Route path="/" element={<LayoutFrontend />}>
+              {/* <Route path="/" element={<LayoutFrontend />}>
               <Route index element={<PageParent />} />
               <Route path='pageParent2' element={<PageParent2 />} />
             </Route> */}
 
-            {/* <Route path='/' element={<StudentList />} /> */}
+              {/* <Route path='/' element={<StudentList />} /> */}
 
-            {/* <Route path='/' element={<StudentList />} /> */}
+              {/* <Route path='/' element={<StudentList />} /> */}
 
-            {/* <Route path='/' element={<ToastReact />} /> */}
+              {/* <Route path='/' element={<ToastReact />} /> */}
 
-            {/* <Route path='/' element={<Calculate />} /> */}
+              {/* <Route path='/' element={<Calculate />} /> */}
 
-            {/* <Route path="/" element={<SidebarEx />} /> */}
+              {/* <Route path="/" element={<SidebarEx />} /> */}
 
-            {/* <Route path="/" element={<AxiosReact />} /> */}
+              {/* <Route path="/" element={<AxiosReact />} /> */}
 
-            <Route path="/" element={<LoginForm />} />
+              {/* <Route path="/" element={<LoginForm />} /> */}
 
-          </Routes>
-          <ScrollToTop smooth />
-        </ToastProvider>
-        {/* </CalculateProvider> */}
-        {/* </SidebarProvider> */}
-      </Router>      
-    </HelmetProvider>
+              <Route path="/" element={<LayoutFrontend />}>
+                <Route index element={<LoginForm />} />
+              </Route>
 
-    // </Provider>
+              <Route path="/Dashboard" element={<LayoutBackend />}>
+                <Route index element={<Dashboard />} />
+              </Route>
+            </Routes>
+            <ScrollToTop smooth />
+          </ToastProvider>
+          {/* </CalculateProvider> */}
+          {/* </SidebarProvider> */}
+        </Router>
+      </HelmetProvider>
+    </Provider>
   );
 }
 

@@ -99,6 +99,7 @@ const LoginPage = () => {
               </div>
 
               <div className='d-flex justify-content-center align-items-center mt-4'>
+                <i class="fas fa-cog fa-spin"></i>
                 <Button 
                   type="submit"
                   label="Đăng nhập"
