@@ -20,7 +20,7 @@ const useGetData = () => {
                 console.log('Here: ', result);
                 setData(result);
             } catch (err) {
-                setError(err);
+                setError(err); 
             } finally {
                 setLoading(false);
             }

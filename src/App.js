@@ -158,15 +158,15 @@ function App() {
 
               {/* <Route path="/" element={<LoginForm />} /> */}
 
-              <Route path="/" element={<LayoutFrontend />}>
+              {/* <Route path="/" element={<LayoutFrontend />}>
                 <Route index element={<LoginForm />} />
               </Route>
 
               <Route path="/Dashboard" element={<LayoutBackend />}>
                 <Route index element={<Dashboard />} />
-              </Route>
+              </Route> */}
 
-              {/* <Route path='/' element={<AxiosReact />} /> */}
+              <Route path='/' element={<AxiosReact />} />
 
             </Routes>
             <ScrollToTop smooth />
