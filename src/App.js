@@ -48,6 +48,7 @@ import ToastReact from "./pages/BaiTap46/ToastReact";
 // import LoginPage from "./pages/BaiTap19/LoginPage";
 // import SignInPage from "./pages/BaiTap19/SignInPage";
 import LayoutBackend from "./components/LayoutBackend";
+import AxiosReact from "./pages/BaiTap56/AxiosReact";
 // import Dashboard from "./pages/BaiTap19/Dashboard";
 // import Profile from "./pages/BaiTap19/Profile";
 // import NotFound from "./pages/BaiTap20/NotFound";
@@ -164,6 +165,9 @@ function App() {
               <Route path="/Dashboard" element={<LayoutBackend />}>
                 <Route index element={<Dashboard />} />
               </Route>
+
+              {/* <Route path='/' element={<AxiosReact />} /> */}
+
             </Routes>
             <ScrollToTop smooth />
           </ToastProvider>

@@ -19,22 +19,30 @@ const Dashboard = () => {
     dispatch(logout());
   };
 
-  const checkToken = () => {
+  useEffect(() => {
     const cookieAccessToken = Cookies.get("accessToken");
     if (!cookieAccessToken) {
       showError("Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.");
       navigate("/");
     }
-  };
+  });
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      console.log("Running...");
-      checkToken();
-    }, 1000);
+  // const checkToken = () => {
+  //   const cookieAccessToken = Cookies.get("accessToken");
+  //   if (!cookieAccessToken) {
+  //     showError("Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.");
+  //     navigate("/");
+  //   }
+  // };
 
-    return () => clearInterval(interval);
-  }, [navigate, showError]);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     console.log("Running...");
+  //     checkToken();
+  //   }, 1000);
+
+  //   return () => clearInterval(interval);
+  // }, [navigate, showError]);
 
   return (
     <div className="container-fluid">

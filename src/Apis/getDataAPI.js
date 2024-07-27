@@ -24,3 +24,17 @@ export const postDataLogin = async (username, password) => {
         throw error;
     }
 };
+
+export const getDataBlogAllAPI = async (accessToken) => {
+    try {
+        const rsp = await axios.get(`${base_url}/blog/blog_category_level_1_get_all_api`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        });
+        return rsp.data;
+    } catch (error) {
+        console.error('Error:', error.message || error.response);
+        throw error;
+    }
+};
