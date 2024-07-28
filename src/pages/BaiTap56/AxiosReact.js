@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { getDataBlogAllAPI } from '../../Apis/getDataAPI';
+import { GetAll_WithToken, GetAll_WithoutToken } from '../../Apis/utilsAxios';
 import Cookies from 'js-cookie';
 
 const useGetData = () => {
@@ -16,7 +16,7 @@ const useGetData = () => {
             setError(false);
             try {
                 alert(">>> accessToken: " + accessToken);
-                const result = await getDataBlogAllAPI(accessToken);
+                const result = await GetAll_WithToken(accessToken);
                 console.log('Here: ', result);
                 setData(result);
             } catch (err) {
