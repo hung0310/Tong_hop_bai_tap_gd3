@@ -20,7 +20,7 @@ export const GetAll_WithoutToken = async () => {
 
 export const GetAll_WithToken = async (accessToken) => {
     try {
-        const rsp = await axiosInstance.get( endPoints.blog_auth_api, {
+        const rsp = await axiosInstance.get(endPoints.blog_auth_api, {
             headers: {
                 Authorization: `Bearer ${accessToken}`
             }
