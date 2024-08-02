@@ -5,35 +5,7 @@ import { Button } from "primereact/button";
 import { GetAll_WithToken, GetAll_WithoutToken } from '../../Apis/utilsAxios';
 import Cookies from 'js-cookie';
 
-const useGetDataWithAcc = () => {
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false); 
-    const [error, setError] = useState(false);
-    const accessToken = Cookies.get("accessToken");
-
-    useEffect(() => {
-        const fetchData = async () => {
-            setLoading(true);
-            setError(false);
-            try {
-                const result = await GetAll_WithToken(accessToken);
-                setData(result);
-            } catch (err) {
-                setError(err); 
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        if (accessToken) {
-            fetchData();
-        }
-    }, [accessToken]);
-
-    return { data, loading, error };
-}
-
-const useGetDataWithoutAcc = () => {
+const useGetData = (accessToken = null) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false); 
     const [error, setError] = useState(false);
@@ -43,16 +15,22 @@ const useGetDataWithoutAcc = () => {
             setLoading(true);
             setError(false);
             try {
-                const result = await GetAll_WithoutToken();
-                setData(result);
+                if(accessToken) {
+                    const result = await GetAll_WithToken(accessToken);
+                    setData(result);                    
+                } else {
+                    const result = await GetAll_WithoutToken();
+                    setData(result);
+                }
             } catch (err) {
                 setError(err); 
             } finally {
                 setLoading(false);
             }
         };
+
         fetchData();
-    }, []);
+    }, [accessToken]);
 
     return { data, loading, error };
 }
@@ -61,8 +39,9 @@ const AxiosReact = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const { data: dataWithAcc, loading: loadingWithAcc, error: errorWithAcc } = useGetDataWithAcc();
-    const { data: dataWithoutAcc, loading: loadingWithoutAcc, error: errorWithoutAcc } = useGetDataWithoutAcc();
+    const accessToken = Cookies.get("accessToken");
+    const { data: dataWithAcc, loading: loadingWithAcc, error: errorWithAcc } = useGetData(accessToken);
+    const { data: dataWithoutAcc, loading: loadingWithoutAcc, error: errorWithoutAcc } = useGetData();
 
     const btn_get_with_acc = () => {
         setData(dataWithAcc);
