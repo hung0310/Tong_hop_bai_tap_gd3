@@ -18,9 +18,8 @@ import { ToastProvider } from "./hooks/ToastProvider";
 // import { Toast } from 'primereact/toast';
 // import Store from "./pages/BaiTap45/Store";
 import ScrollToTop from "react-scroll-to-top";
-import LoginForm from "./pages/BaiTap55/LoginForm";
-import Dashboard from "./pages/BaiTap55/Dashboard";
-import Store from "./pages/BaiTap55/Store";
+import LoginForm from "./pages/BaiTap58/LoginForm";
+import Store from "./pages/BaiTap58/Store";
 // import AxiosReact from './pages/BaiTap52/AxiosReact';
 import LayoutFrontend from "./components/LayoutFrontend";
 // import StudentList from "./pages/BaiTap45/StudentList";
@@ -158,15 +157,15 @@ function App() {
 
               {/* <Route path="/" element={<LoginForm />} /> */}
 
-              {/* <Route path="/" element={<LayoutFrontend />}>
+              <Route path="/" element={<LayoutFrontend />}>
                 <Route index element={<LoginForm />} />
               </Route>
 
-              <Route path="/Dashboard" element={<LayoutBackend />}>
-                <Route index element={<Dashboard />} />
-              </Route> */}
+              <Route path="/AxiosReact" element={<LayoutBackend />}>
+                <Route index element={<AxiosReact />} />
+              </Route>
 
-              <Route path='/' element={<AxiosReact />} />
+              {/* <Route path='/' element={<AxiosReact />} /> */}
 
             </Routes>
             <ScrollToTop smooth />

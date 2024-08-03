@@ -42,7 +42,7 @@ const LoginForm = () => {
         );
         if (accessToken) {
           showSuccess("Đăng nhập thành công!");
-          navigate("/Dashboard");
+          navigate("/AxiosReact");
           dispatch(login(accessToken));
         }
       } catch (error) {

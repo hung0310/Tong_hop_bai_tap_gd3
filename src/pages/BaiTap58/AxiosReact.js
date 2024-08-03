@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from "primereact/button";
-import { GetAll_WithToken, GetAll_WithoutToken } from '../../Apis/utilsAxios';
+import { GetAll_WithToken, GetAll_WithoutToken } from '../../utils/studentApi';
 import Cookies from 'js-cookie';
 
 const useGetData = (accessToken = null) => {
