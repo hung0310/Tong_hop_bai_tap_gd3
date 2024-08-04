@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { base_url, blog_auth_api, blog_not_auth_api, blog_delete_data, login } from '../Apis/constantsApi';
+import { 
+    base_url, 
+    blog_auth_api, 
+    blog_not_auth_api, 
+    blog_delete_data, login, 
+    blog_post_get_all_not_auth_api,
+} from '../Apis/constantsApi';
 
 const axiosInstance = axios.create({
     baseURL: base_url,
@@ -14,6 +20,15 @@ export const GetAll_WithoutToken = async () => {
         return rsp.data;
     } catch (error) {
         console.error('Error:', error.message || error.response);
+        throw error;
+    }
+};
+
+export const GetAll_Post_Not_auth_API = async (page) => {
+    try {
+        const rsp = await axiosInstance.get(`${blog_post_get_all_not_auth_api}?page=${page}`);
+        return rsp.data;
+    } catch(error) {
         throw error;
     }
 };
