@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { setCookie, deleteCookie, getCookie } from "./ConfigCookie";
+import { setCookie, deleteCookie, getCookie } from "../../utils/ConfigCookies";
 
 const initialState = {
   accessToken: getCookie("accessToken"),

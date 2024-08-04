@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { postDataLogin } from "../../utils/studentApi";
+import { PostData_Login } from '../../Apis/StudentAPI';
 import { useNavigate } from "react-router-dom";
 import { login } from "./Authentication";
 import { useDispatch } from "react-redux";
@@ -36,7 +36,7 @@ const LoginForm = () => {
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       try {
-        const accessToken = await postDataLogin(
+        const accessToken = await PostData_Login(
           values.username,
           values.password
         );

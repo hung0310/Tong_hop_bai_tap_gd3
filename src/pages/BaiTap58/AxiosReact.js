@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from "primereact/button";
-import { GetAll_WithToken, GetAll_WithoutToken } from '../../utils/studentApi';
-import Cookies from 'js-cookie';
+import { GetData_With_Token, GetData_Without_Token } from '../../Apis/StudentAPI';
+import * as configCookie from '../../utils/ConfigCookies';
 
 const useGetData = (accessToken = null) => {
     const [data, setData] = useState([]);
@@ -16,10 +16,10 @@ const useGetData = (accessToken = null) => {
             setError(false);
             try {
                 if(accessToken) {
-                    const result = await GetAll_WithToken(accessToken);
+                    const result = await GetData_With_Token(accessToken);
                     setData(result);                    
                 } else {
-                    const result = await GetAll_WithoutToken();
+                    const result = await GetData_Without_Token();
                     setData(result);
                 }
             } catch (err) {
@@ -39,7 +39,7 @@ const AxiosReact = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const accessToken = Cookies.get("accessToken");
+    const accessToken = configCookie.getCookie('accessToken');
     const { data: dataWithAcc, loading: loadingWithAcc, error: errorWithAcc } = useGetData(accessToken);
     const { data: dataWithoutAcc, loading: loadingWithoutAcc, error: errorWithoutAcc } = useGetData();
 
