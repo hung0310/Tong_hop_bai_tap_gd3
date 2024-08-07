@@ -11,7 +11,7 @@ export const setCookie = (name, value, options = {}) => {
     const combinedOptions = { ...defaultOptions, ...options };
 
     Cookies.set(name, value, combinedOptions);
-};
+}; 
 
 export const getCookie = (name) => {
     return Cookies.get(name);

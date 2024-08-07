@@ -5,7 +5,7 @@ export const GetData_Without_Token = () => {
     return method_axios.GetAll_WithoutToken(url.blog_not_auth_api);
 };
 
-export const GetData_With_Token = (accessToken) => {
+export const GetData_With_Token = (accessToken) => { 
     return method_axios.GetAll_WithToken(url.blog_auth_api, accessToken);
 }
 

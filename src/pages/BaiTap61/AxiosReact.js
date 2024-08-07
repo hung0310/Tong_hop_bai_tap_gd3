@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { GetAll_Post_Not_auth_API } from '../../utils/studentApi';
+import { GetData_Not_auth_API } from '../../Apis/StudentAPI';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import ReactPaginate from 'react-paginate';
@@ -17,9 +17,9 @@ const AxiosReact = () => {
             setLoading(true);
             setError(null);
             try {
-                const result = await GetAll_Post_Not_auth_API(currentPage);
+                const result = await GetData_Not_auth_API(currentPage);
                 setData(result.data || []);
-                const total = Math.ceil(result.totalRows / result.page_size);
+                const total = Math.ceil(result.totalRows / result.page_size); 
                 setPageSize(result.page_size);
                 setTotalPage(total);
             } catch (err) {
@@ -78,6 +78,7 @@ const AxiosReact = () => {
                 value={data}
                 stripedRows
                 emptyMessage="No records found"
+                loading={loading}
             >
                 <Column
                     field="id"
