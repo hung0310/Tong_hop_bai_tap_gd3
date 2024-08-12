@@ -2,15 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { GetData_Not_auth_API } from '../../Apis/StudentAPI';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import ReactPaginate from 'react-paginate';
+import { useReactPaginate } from '../../hooks/useReactPaginate';
 
 const AxiosReact = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false); 
     const [error, setError] = useState(null);
     const [totalPage, setTotalPage] = useState(0);
-    const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(0);
+
+    const { currentPage, PaginationComponent } = useReactPaginate(totalPage);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,10 +33,6 @@ const AxiosReact = () => {
         fetchData();
     }, [currentPage]);
 
-    const handlePageClick = (event) => {
-        setCurrentPage(event.selected + 1);
-    };
-
     const getRowNumber = (index) => {
         return (currentPage - 1) * pageSize + index + 1;
     };
@@ -54,7 +51,7 @@ const AxiosReact = () => {
             }}
         >
             <div className='d-flex justify-content-center align-items-center my-4'>
-                <ReactPaginate
+                {/* <ReactPaginate
                     breakLabel="..."
                     nextLabel="next >"
                     onPageChange={handlePageClick}
@@ -71,7 +68,8 @@ const AxiosReact = () => {
                     breakLinkClassName="page-link"
                     containerClassName="pagination"
                     activeClassName="active"
-                />                
+                />                 */}
+                <PaginationComponent />
             </div>
 
             <DataTable

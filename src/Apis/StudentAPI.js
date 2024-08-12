@@ -20,3 +20,7 @@ export const PostData_Login = (username, password) => {
 export const DeleteData = () => {
     return method_axios.deleteData(url.blog_delete_data);
 };
+
+export const PostComment = (fullname, phone, comment) => {
+    return method_axios.postComment(url.post_comment, fullname, phone, comment);
+};

@@ -59,3 +59,17 @@ export const deleteData = async (blog_delete_data) => {
         throw error;
     }
 };
+
+export const postComment = async (url_comment, fullname, phone, comment) => {
+    try {
+        const rsp = await axios.post(url_comment, {
+            fullname,
+            phone,
+            comment,
+        });
+        return rsp.message;
+    } catch (error) {
+        console.error('Error:', error.message || error.response);
+        throw error;
+    }
+};
