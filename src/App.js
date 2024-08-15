@@ -22,6 +22,8 @@ import LoginForm from "./pages/BaiTap58/LoginForm";
 import Store from "./pages/BaiTap58/Store";
 // import AxiosReact from './pages/BaiTap52/AxiosReact';
 import LayoutFrontend from "./components/LayoutFrontend";
+import Search from "./pages/BaiTap64/Search";
+import Navbar from "./pages/BaiTap65/Navbar";
 // import StudentList from "./pages/BaiTap45/StudentList";
 import ToastReact from "./pages/BaiTap46/ToastReact";
 // import Calculate from "./pages/BaiTap47/Calculate";
@@ -166,9 +168,13 @@ function App() {
                 <Route index element={<AxiosReact />} />
               </Route> */}
 
-              <Route path='/' element={<AxiosReact />} />
+              {/* <Route path='/' element={<AxiosReact />} /> */}
 
               {/* <Route path='/' element={<SupportForm />} /> */}
+
+              <Route path='/' element={<Search />} />
+
+              {/* <Route path='/' element={<Navbar />} /> */}
 
             </Routes>
             <ScrollToTop smooth />

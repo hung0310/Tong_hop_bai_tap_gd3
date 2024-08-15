@@ -13,7 +13,7 @@ export const useReactPaginate = (totalPage) => {
             breakLabel="..."
             nextLabel="next >"
             onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
+            pageRangeDisplayed={5} 
             pageCount={totalPage}
             previousLabel="< previous"
             pageClassName="page-item"
