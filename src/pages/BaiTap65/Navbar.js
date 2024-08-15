@@ -8,7 +8,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { GetData_Course_Category } from "../../Apis/StudentAPI";
 
 
-const SupportForm = () => {
+const Navbar = () => {
 
     const [data, setData] = useState([]);
     const [hoverMenu, setHoverMenu] = useState(false);
@@ -18,8 +18,9 @@ const SupportForm = () => {
             try {
                 const rsp = await GetData_Course_Category();
                 setData(rsp.data);
+                console.log(data);
             } catch (error) {
-                console.error("Error fetching data:", error);
+                throw error;
             }
         };
         fetchData();
@@ -41,9 +42,16 @@ const SupportForm = () => {
     }, {});
 
     const menuModel = Object.keys(groupedData).map(category => ({
-        label: category,
+        label: 
+            <span className="fw-bold">
+                {category}
+            </span>,
         items: groupedData[category].map(course => ({
-            label: course
+            label: (
+                <span>
+                    {course}
+                </span>
+            )
         }))
     }));
 
@@ -52,7 +60,7 @@ const SupportForm = () => {
     };
 
     const handleMouseLeave = () => {
-        setHoverMenu(hoverMenu);
+        setHoverMenu(false);
     };
 
     return (
@@ -65,7 +73,6 @@ const SupportForm = () => {
                 <Link 
                     className="d-flex text-decoration-none text-black"
                     onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
                 >
                     <span className="ml-5 fw-bold" style={{fontSize: "20px"}}>KHÓA HỌC MENTER</span>
                     <FontAwesomeIcon icon={faBars} className="mt-2 ml-4"/>
@@ -75,12 +82,27 @@ const SupportForm = () => {
             {hoverMenu && (
                 <TieredMenu 
                     model={menuModel}
-                    className="no-underline"
-                    style={{ width: '50%', textDecoration: 'none' }}
+                    style={{ width: '50%' }}
+                    onMouseLeave={handleMouseLeave}
                 />
             )}
+
+            {/* {true && (
+                <div>
+                    {Object.keys(groupedData).map(category => (
+                        <div key={category}>
+                            <h2>{category}:</h2>
+                            <ul>
+                                {groupedData[category].map((course, index) => (
+                                    <li key={index}>{course}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+            )} */}
         </div>
     );
 };
 
-export default SupportForm;
+export default Navbar;
