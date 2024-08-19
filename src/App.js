@@ -172,9 +172,9 @@ function App() {
 
               {/* <Route path='/' element={<SupportForm />} /> */}
 
-              {/* <Route path='/' element={<Search />} /> */}
+              <Route path='/' element={<Search />} />
 
-              <Route path='/' element={<Navbar />} />
+              {/* <Route path='/' element={<Navbar />} /> */}
 
             </Routes>
             <ScrollToTop smooth />

@@ -16,7 +16,7 @@ export const GetAll_Course_Category = async (course_category) => {
         return rsp;
     } catch(error) {
         throw error;
-    }
+    } 
 };
 
 export const GetAll_Post_Not_auth_API = async (blog_post_get_all_not_auth_api, page) => {

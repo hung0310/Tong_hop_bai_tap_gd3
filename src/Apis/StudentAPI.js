@@ -27,7 +27,7 @@ export const PostComment = (fullname, phone, comment) => {
 
 export const GetData_Blog = (content_search) => {
     return method_axios.GetAll_Post_Search(url.blog_post_search, content_search);
-}
+} 
 
 export const GetData_Course_Category = () => {
     return method_axios.GetAll_Course_Category(url.course_category);
