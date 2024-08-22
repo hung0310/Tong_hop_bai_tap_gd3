@@ -16,7 +16,6 @@ const Component_Parent = () => {
     <div>
       <h1 className='d-flex justify-content-center align-items-center'>Value: {count}</h1>
       <Component_Child 
-        count={count}
         onIncrement={incrementCount}
         onDecrement={decrementCount}
       />

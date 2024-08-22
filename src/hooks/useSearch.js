@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import axios from 'axios';
 import debounce from 'lodash/debounce';
 
-const useSearch = ({ url, setData, setNotFound, setLoading  }) => {
+const useSearch = ({ url, setData, setNotFound, setLoading }) => {
   const handleSearch = useCallback(
     debounce(async (searchTerm) => {
       setLoading(true);

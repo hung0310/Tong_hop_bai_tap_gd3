@@ -2,7 +2,7 @@ import React from 'react';
 import logo from "../../assets/images/logo.png";
 import logo_sub from "../../assets/images/logo_sub_admin.png";
 
-function Component_Child({ count, onIncrement, onDecrement }) {
+function Component_Child({ onIncrement, onDecrement }) {
   return (
     <div className='container-fluid'>
       <div className='d-flex justify-content-center align-items-center'>
@@ -12,7 +12,7 @@ function Component_Child({ count, onIncrement, onDecrement }) {
         border: "1px solid #959CA9",
         borderRadius: "5px",
         maxWidth: "900px",
-        margin: "0 auto"
+        margin: "0 auto" 
       }}>
         <div className='row'>
           <div className='col-lg-6 col-md-12 px-5'>

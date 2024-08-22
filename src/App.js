@@ -23,7 +23,7 @@ import Store from "./pages/BaiTap58/Store";
 // import AxiosReact from './pages/BaiTap52/AxiosReact';
 import LayoutFrontend from "./components/LayoutFrontend";
 import Search from "./pages/BaiTap64/Search";
-import Navbar from "./pages/BaiTap65/Navbar";
+import Navbar from "./pages/BaiTap66/Navbar";
 // import StudentList from "./pages/BaiTap45/StudentList";
 import ToastReact from "./pages/BaiTap46/ToastReact";
 // import Calculate from "./pages/BaiTap47/Calculate";
@@ -51,6 +51,7 @@ import ToastReact from "./pages/BaiTap46/ToastReact";
 import LayoutBackend from "./components/LayoutBackend";
 import AxiosReact from "./pages/BaiTap61/AxiosReact";
 import SupportForm from "./pages/BaiTap63/SupportForm";
+import Component_Parent from "./pages/BaiTap10/Component_Parent";
 // import Dashboard from "./pages/BaiTap19/Dashboard";
 // import Profile from "./pages/BaiTap19/Profile";
 // import NotFound from "./pages/BaiTap20/NotFound";
@@ -101,6 +102,8 @@ function App() {
 
               {/* Bài tập 7
             <Route path="/" element={<LoadImage />} /> */}
+
+              {/* <Route path="/" element={<Component_Parent />} /> */}
 
               {/* <Route path="/" element={<Component_Parent />} /> */}
 
@@ -172,9 +175,11 @@ function App() {
 
               {/* <Route path='/' element={<SupportForm />} /> */}
 
-              <Route path='/' element={<Search />} />
+              {/* <Route path='/' element={<Search />} /> */}
 
               {/* <Route path='/' element={<Navbar />} /> */}
+
+              <Route path='/' element={<Navbar />} />
 
             </Routes>
             <ScrollToTop smooth />
