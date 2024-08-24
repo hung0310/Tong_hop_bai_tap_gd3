@@ -15,6 +15,7 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import { ToastProvider } from "./hooks/ToastProvider";
+import LayoutCategory from './pages/BaiTap67/LayoutCategory';
 // import { Toast } from 'primereact/toast';
 // import Store from "./pages/BaiTap45/Store";
 import ScrollToTop from "react-scroll-to-top";
@@ -23,7 +24,7 @@ import Store from "./pages/BaiTap58/Store";
 // import AxiosReact from './pages/BaiTap52/AxiosReact';
 import LayoutFrontend from "./components/LayoutFrontend";
 import Search from "./pages/BaiTap64/Search";
-import Navbar from "./pages/BaiTap66/Navbar";
+import Navbar from "./pages/BaiTap65/Navbar";
 // import StudentList from "./pages/BaiTap45/StudentList";
 import ToastReact from "./pages/BaiTap46/ToastReact";
 // import Calculate from "./pages/BaiTap47/Calculate";
@@ -180,6 +181,8 @@ function App() {
               {/* <Route path='/' element={<Navbar />} /> */}
 
               <Route path='/' element={<Navbar />} />
+
+              {/* <Route path='/' element={<LayoutCategory />} /> */}
 
             </Routes>
             <ScrollToTop smooth />

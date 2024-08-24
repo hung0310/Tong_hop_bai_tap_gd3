@@ -4,21 +4,31 @@ import { Image } from "primereact/image";
 import logo from "../../assets/images/logo.png";
 import { TieredMenu } from 'primereact/tieredmenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { GetData_Course_Category } from "../../Apis/StudentAPI";
-
+import './style.css';
 
 const Navbar = () => {
-
     const [data, setData] = useState([]);
     const [hoverMenu, setHoverMenu] = useState(false);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            if (hoverMenu) {
+                const submenus = document.querySelectorAll('.p-submenu-list');
+                submenus.forEach((submenu, index) => {
+                    submenu.style.setProperty('top', `-${index * 100}%`, 'important');
+                });
+            }
+        }, 0);
+        return () => clearInterval(intervalId);
+    }, [hoverMenu]);   
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const rsp = await GetData_Course_Category();
                 setData(rsp.data);
-                console.log(data);
             } catch (error) {
                 throw error;
             }
@@ -42,19 +52,42 @@ const Navbar = () => {
     }, {});
 
     const menuModel = Object.keys(groupedData).map(category => ({
-        label: 
-            <span className="fw-bold">
+        label: (
+            <span className="fw-bold text-white">
                 {category}
-            </span>,
-        items: groupedData[category].map(course => ({
-            label: (
-                <span>
-                    {course}
-                </span>
-            )
-        }))
+            </span>
+        ),
+        items: [
+            {
+                label: (
+                    <span className="fw-bold text_category" style={{ fontSize: '20px' }}>
+                        {category}
+                    </span>
+                )
+            },
+            ...groupedData[category].map(course => ({
+                label: (
+                    <div className="d-flex py-0">
+                        <div 
+                            className="rounded-circle mx-2"
+                            style={{
+                                backgroundColor: '#A00B93',
+                                padding: '2px'
+                            }}
+                        >
+                            <FontAwesomeIcon icon={faArrowRight} style={{ color: 'white' }} /> 
+                        </div>
+                          
+                        <span>
+                            {course}
+                        </span>       
+                        <span className="fw-bold mx-3 text_free">*FREE*</span>                  
+                    </div>
+                )
+            }))
+        ]
     }));
-
+        
     const handleMouseEnter = () => {
         setHoverMenu(true);
     };
@@ -69,7 +102,7 @@ const Navbar = () => {
                 <Image src={logo} alt="logo" preview />
             </div>
 
-            <div className="w-vh">
+            <div className="w-vh mx-5">
                 <Link 
                     className="d-flex text-decoration-none text-black"
                     onMouseEnter={handleMouseEnter}
@@ -78,29 +111,19 @@ const Navbar = () => {
                     <FontAwesomeIcon icon={faBars} className="mt-2 ml-4"/>
                 </Link>
             </div>
-
-            {hoverMenu && (
-                <TieredMenu 
-                    model={menuModel}
-                    style={{ width: '50%' }}
-                    onMouseLeave={handleMouseLeave}
-                />
-            )}
-
-            {/* {true && (
-                <div>
-                    {Object.keys(groupedData).map(category => (
-                        <div key={category}>
-                            <h2>{category}:</h2>
-                            <ul>
-                                {groupedData[category].map((course, index) => (
-                                    <li key={index}>{course}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
-                </div>
-            )} */}
+            <div className="div-wrapper">
+                {hoverMenu && (
+                    <TieredMenu 
+                        model={menuModel}
+                        style={{ 
+                            width: '50%',
+                            backgroundColor: "#A00B93",
+                        }}
+                        className="text-white"
+                        onMouseLeave={handleMouseLeave}
+                    />
+                )}                
+            </div>
         </div>
     );
 };

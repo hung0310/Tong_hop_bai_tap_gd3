@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   CContainer, CTable, CTableBody,
   CTableDataCell, CTableHead,
@@ -7,9 +7,10 @@ import {
   CImage, CButton, CFormInput,
   CSpinner
 } from '@coreui/react';
-import logo from "../../assets/images/logo.png";
-import useSearch from '../../hooks/useSearch';
-import { blog_post_search } from '../../Apis/constantsApi';
+import useSearch from '../../../hooks/useSearch';
+import { blog_post_search } from '../../../Apis/constantsApi';
+
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 function StudentList() {
   const [contentSearch, setContentSearch] = useState('');
@@ -32,17 +33,15 @@ function StudentList() {
 
   return (
     <CContainer fluid>
-      <Helmet>
-        <title>SearchData</title>
-      </Helmet>
-      <div className='d-flex justify-content-center align-items-center'>
+      <div 
+        className='p-3'
+        style={{
+          backgroundColor: '#ffc048',
+          borderRadius: '20px'
+        }}
+      >
         <div className='row'>
-          <div className='d-flex justify-content-center align-items-center'>
-            <CImage src={logo} alt="logo" fluid style={{ width: "200px", height: "200px" }} />
-          </div>
           <div className='d-flex'>
-            <h6 className='w-4 mt-3 fw-normal'>Search result: </h6>
-            <h6 className='mr-5 mt-3'>{contentSearch}</h6>
 
             <CFormInput
               type='text'
@@ -53,7 +52,7 @@ function StudentList() {
             />
             <CButton
               type="submit"
-              className='text-white py-2 px-5 fw-bold ml-5'
+              className='text-white px-3 fw-bold ml-2'
               style={{
                 borderRadius: "8px",
                 background: "#F4841F",
@@ -62,12 +61,12 @@ function StudentList() {
               }}
               onClick={() => handleSearch(contentSearch)}
             >
-              Search
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
             </CButton>
           </div>
         </div>
       </div>
-      <CContainer className='p-5'>
+      {/* <CContainer className='p-5'>
         {loading ? (
           <div className="text-center">
             <CSpinner color="primary" /> 
@@ -95,7 +94,7 @@ function StudentList() {
             </CTableBody>
           </CTable>
         )}
-      </CContainer>
+      </CContainer> */}
     </CContainer>
   );
 }

@@ -1,0 +1,56 @@
+.p-tieredmenu-root-list {
+    padding-left: 0px !important;
+}
+
+.p-tieredmenu {
+    width: 25% !important;
+    margin-left: 60px !important;
+    padding: 0px !important;
+}
+
+.p-menuitem:hover {
+    background-color: #fff !important;
+}
+
+.p-menuitem-link {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+
+.p-menuitem:hover .p-menuitem-text span {
+    color: initial !important;
+    font-size: '15px' !important;
+}
+
+.p-menuitem:hover .p-submenu-icon {
+    color: initial !important;
+}
+
+.p-tieredmenu-root-list {
+    margin-bottom: 0px !important;
+}
+
+.p-submenu-icon {
+    color: white !important;
+}
+
+.p-submenu-list {
+    width: 1000px !important;
+    height: 322px !important;
+    background-color: #81ecec;
+}
+
+.p-submenu-list .p-menuitem .p-menuitem-content .p-menuitem-link {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
+
+.p-submenu-list .p-menuitem .p-menuitem-text .text_free {
+    color: #FF0000 !important;
+}
+
+.p-tieredmenu .p-menuitem-active > .p-submenu-list {
+    display: block;
+    left: 100%;
+    top: 0;
+}
