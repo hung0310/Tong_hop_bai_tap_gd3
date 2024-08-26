@@ -180,9 +180,9 @@ function App() {
 
               {/* <Route path='/' element={<Navbar />} /> */}
 
-              <Route path='/' element={<Navbar />} />
+              {/* <Route path='/' element={<Navbar />} /> */}
 
-              {/* <Route path='/' element={<LayoutCategory />} /> */}
+              <Route path='/' element={<LayoutCategory />} />
 
             </Routes>
             <ScrollToTop smooth />

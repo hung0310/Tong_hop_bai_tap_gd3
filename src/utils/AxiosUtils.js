@@ -8,7 +8,7 @@ export const GetAll_WithoutToken = async (blog_not_auth_api) => {
         console.error('Error:', error.message || error.response);
         throw error;
     }
-};
+}; 
 
 export const GetAll_Course_Category = async (course_category) => {
     try {

@@ -4,7 +4,7 @@ import * as method_axios from '../utils/AxiosUtils';
 export const GetData_Without_Token = () => {
     return method_axios.GetAll_WithoutToken(url.blog_not_auth_api);
 };
-
+ 
 export const GetData_With_Token = (accessToken) => { 
     return method_axios.GetAll_WithToken(url.blog_auth_api, accessToken);
 }
@@ -31,4 +31,4 @@ export const GetData_Blog = (content_search) => {
 
 export const GetData_Course_Category = () => {
     return method_axios.GetAll_Course_Category(url.course_category);
-};
+}; 

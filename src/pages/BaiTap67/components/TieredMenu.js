@@ -1,24 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { TieredMenu } from 'primereact/tieredmenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import '../assets/css/style.css';
 
 const TieredMenuComponent = ({ groupedData }) => {
     const [hoverMenu, setHoverMenu] = useState(false);
 
+    useEffect(() => {
+        const intervalId = setInterval(() => { 
+            if (hoverMenu) {
+                const submenus = document.querySelectorAll('.p-submenu-list');
+                submenus.forEach((submenu, index) => {
+                    submenu.style.setProperty('top', `-${index * 100}%`, 'important');
+                }); 
+            }
+        }, 0);
+        return () => clearInterval(intervalId);
+    }, [hoverMenu]); 
+
     const menuModel = Object.keys(groupedData).map(category => ({
-        label: 
-            <span className="fw-bold">
+        label: (
+            <span className="fw-bold text-white">
                 {category}
-            </span>,
-        items: groupedData[category].map(course => ({
-            label: (
-                <span>
-                    {course}
-                </span>
-            )
-        }))
+            </span>
+        ),
+        items: [
+            {
+                label: (
+                    <span className="fw-bold text_category" style={{ fontSize: '20px' }}>
+                        {category}
+                    </span>
+                )
+            },
+            ...groupedData[category].map(course => ({
+                label: (
+                    <div className="d-flex py-0">
+                        <div 
+                            className="rounded-circle mx-2"
+                            style={{
+                                backgroundColor: '#A00B93',
+                                padding: '2px'
+                            }}
+                        >
+                            <FontAwesomeIcon icon={faArrowRight} style={{ color: 'white' }} /> 
+                        </div>
+                          
+                        <span>
+                            {course}
+                        </span>       
+                        <span className="fw-bold mx-3 text_free">*FREE*</span>                  
+                    </div>
+                )
+            }))
+        ]
     }));
 
     const handleMouseEnter = () => {
@@ -38,7 +74,7 @@ const TieredMenuComponent = ({ groupedData }) => {
                     height: '45px'
                 }}
             >
-                <div style={{ width: '300px' }}>
+                <div style={{ width: '300px' }} className="mx-5">
                     <Link 
                         className="d-flex text-decoration-none text-black"
                         onMouseEnter={handleMouseEnter}
@@ -62,16 +98,20 @@ const TieredMenuComponent = ({ groupedData }) => {
                     </Link>
                 </div>
             </div>     
-            <div>
+            <div className="div-wrapper">
                 {hoverMenu && (
                     <TieredMenu 
                         model={menuModel}
-                        style={{ width: '45%', zIndex: "1000" }}
+                        style={{ 
+                            backgroundColor: "#A00B93",
+                            width: '45%',
+                            zIndex: "1000"
+                        }}
+                        className="text-white position-absolute"
                         onMouseLeave={handleMouseLeave}
-                        className="position-absolute"
                     />
-                )}   
-            </div>      
+                )}                
+            </div>    
         </div>
 
     );

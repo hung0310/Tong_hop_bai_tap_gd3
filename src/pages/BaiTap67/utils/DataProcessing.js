@@ -39,3 +39,15 @@ export const GroupedData_DropDown = (dataCategories) => {
         return acc;
     }, {});
 };
+
+// ------------------ContentBlogPost---------------------
+
+export const DataCategories_Content = (data) => {
+    return data.map(item => ({
+        imageTitle: item.image_title.image,
+        title: item.title,
+        subTitle: item.subtitle, 
+        claps: item.claps,
+        views: item.views
+    }));
+};
