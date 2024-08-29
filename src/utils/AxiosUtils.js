@@ -91,3 +91,12 @@ export const postComment = async (url_comment, fullname, phone, comment) => {
         throw error;
     }
 };
+
+export const GetView_Most = async (blog_view_most) => {
+    try {
+        const rsp = await axios.get(blog_view_most);
+        return rsp;
+    } catch(error) {
+        throw error;
+    } 
+}; 

@@ -15,7 +15,7 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import { ToastProvider } from "./hooks/ToastProvider";
-import LayoutCategory from './pages/BaiTap67/LayoutCategory';
+import LayoutCategory from './pages/BaiTap68/LayoutCategory';
 // import { Toast } from 'primereact/toast';
 // import Store from "./pages/BaiTap45/Store";
 import ScrollToTop from "react-scroll-to-top";

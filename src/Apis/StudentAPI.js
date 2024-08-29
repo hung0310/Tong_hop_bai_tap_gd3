@@ -32,3 +32,7 @@ export const GetData_Blog = (content_search) => {
 export const GetData_Course_Category = () => {
     return method_axios.GetAll_Course_Category(url.course_category);
 }; 
+
+export const GetData_ViewMost = () => {
+    return method_axios.GetView_Most(url.blog_post_get_view_most);
+};  
