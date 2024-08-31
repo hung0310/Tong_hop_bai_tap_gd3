@@ -1,35 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  CContainer, CTable, CTableBody,
-  CTableDataCell, CTableHead,
-  CTableHeaderCell, CTableRow,
-  CImage, CButton, CFormInput,
-  CSpinner
+  CContainer, CButton, CFormInput
 } from '@coreui/react';
-import useSearch from '../../../hooks/useSearch';
-import { blog_post_search } from '../../../Apis/constantsApi';
 
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
+import { useDispatch } from 'react-redux';
+import { setQuery } from '../actions/searchAction';
+
 function StudentList() {
+  const dispatch = useDispatch();
+
   const [contentSearch, setContentSearch] = useState('');
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false); 
-  const [notFound, setNotFound] = useState(false);
-
-  const { handleSearch } = useSearch({ url: blog_post_search, setData, setNotFound, setLoading });
-
-  useEffect(() => {
-    handleSearch(''); 
-  }, [handleSearch]);
 
   const handleInputChange = (event) => {
     const value = event.target.value;
     setContentSearch(value);
-    handleSearch(value); 
+    dispatch(setQuery(value));
   };
 
+  const handleSearch = () => {
+    dispatch(setQuery(contentSearch));
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
 
   return (
     <CContainer fluid>
@@ -49,6 +48,7 @@ function StudentList() {
               placeholder='What do you want to search?'
               required
               onChange={handleInputChange}
+              onKeyPress={handleKeyPress}
             />
             <CButton
               type="submit"
@@ -66,35 +66,6 @@ function StudentList() {
           </div>
         </div>
       </div>
-      {/* <CContainer className='p-5'>
-        {loading ? (
-          <div className="text-center">
-            <CSpinner color="primary" /> 
-            <p>Loading...</p>
-          </div>
-        ) : notFound ? (
-          <div className='d-flex justify-content-center align-items-center'>
-            <h3 className='mt-5'>Not found anything!</h3>
-          </div>
-        ) : (
-          <CTable>
-            <CTableHead color='dark'>
-              <CTableRow>
-                <CTableHeaderCell scope='col'>STT</CTableHeaderCell>
-                <CTableHeaderCell scope='col'>Description</CTableHeaderCell>
-              </CTableRow>
-            </CTableHead>
-            <CTableBody>
-              {data.map((data, index) => (
-                <CTableRow key={index} striped hover>
-                  <CTableDataCell>{index + 1}</CTableDataCell>
-                  <CTableDataCell>{data.title}</CTableDataCell>
-                </CTableRow>
-              ))}
-            </CTableBody>
-          </CTable>
-        )}
-      </CContainer> */}
     </CContainer>
   );
 }

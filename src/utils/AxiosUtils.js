@@ -31,7 +31,7 @@ export const GetAll_Post_Not_auth_API = async (blog_post_get_all_not_auth_api, p
 export const GetAll_Post_Search = async (blog_post_search, content_search) => {
     try {
         const rsp = await axios.get(`${blog_post_search}?search=${content_search}`);
-        return rsp.data;
+        return rsp;
     } catch(error) {
         throw error;
     }

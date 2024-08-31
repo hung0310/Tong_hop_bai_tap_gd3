@@ -1,14 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import debounce from 'lodash/debounce';
+import { useSelector } from 'react-redux';
 import { Image } from "primereact/image";
-import { GetData_Course_Category, GetData_Without_Token, GetData_Not_auth_API, GetData_ViewMost } from "../../Apis/StudentAPI";
+import { GetData_Course_Category, GetData_Without_Token, GetData_Not_auth_API, GetData_ViewMost, GetData_Blog } from "../../Apis/StudentAPI";
 import TieredMenu from "./components/TieredMenu"; 
 import DropDown from "./components/DropDown"; 
 import Search from "./components/Search"; 
 import ContentPost from "./components/ContentPost";
 import { useReactPaginate } from '../../hooks/useReactPaginate';
+import { useDispatch } from 'react-redux';
+import { setQuery } from './actions/searchAction';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { faX } from "@fortawesome/free-solid-svg-icons";
 
 import { 
-  DataCategories_TieredMenu, DataCategories_DropDown, DataCategories_Content, DataCategories_ViewMost,
+  DataCategories_TieredMenu, DataCategories_DropDown, DataCategories_Content, DataCategories_ViewMost, DataCategories_Search,
   GroupedData_TiredMenu, GroupedData_DropDown
 } from "./utils/DataProcessing"; 
 
@@ -93,15 +101,55 @@ const useCourse_ViewMost = () => {
   return dataCourse_ViewMost;
 };
 
+const useSearch = ({ contentSearch, setNotFound }) => {
+  const [dataCourse_Search, setDataCourse_Search] = useState([]);
+
+  const debouncedSearch = useCallback(
+    debounce(async () => {
+      try {
+        const result = await GetData_Blog(contentSearch);
+        setDataCourse_Search(result.data || []);
+        if (result.data && result.data.length === 0) {
+          setNotFound(true); 
+        } else {
+          setNotFound(false);
+        }
+      } catch (error) {
+        console.error(error);
+        setNotFound(true); 
+      }
+    }, 300),
+    [contentSearch, setNotFound]
+  );
+
+  debouncedSearch();
+
+  return dataCourse_Search;
+};
+
 const LayoutCategory = () => {
+
+  const dispatch = useDispatch();
+
+  const [isClose, setIsClose] = useState(true);
+  const CloseResultSearch = () => {
+    setIsClose(false);
+    dispatch(setQuery(''));
+    setIsClose(true);
+  };
+
   const [totalPage, setTotalPage] = useState(0);
   const [pageSize, setPageSize] = useState(0);
   const { currentPage, PaginationComponent } = useReactPaginate(totalPage);
+
+  const [notFound, setNotFound] = useState(false);
+  const contentSearch = useSelector((state) => state.search.query);
 
   const dataCourse_TiredMenu = useCourse_TieredMenu();
   const dataCourse_DropDown = useCourse_DropDown();
   const dataCourse_Content = useCourse_Content(setTotalPage, setPageSize, currentPage);
   const dataCourse_ViewMost = useCourse_ViewMost();
+  const dataCoure_Search = useSearch({ contentSearch, setNotFound });
 
   const _dataCategories_TieredMenu = DataCategories_TieredMenu(dataCourse_TiredMenu);
   const _groupedData_TieredMenu = GroupedData_TiredMenu(_dataCategories_TieredMenu);
@@ -111,6 +159,7 @@ const LayoutCategory = () => {
 
   const _dataCategories_Content = DataCategories_Content(dataCourse_Content);
   const _dataCategories_ViewMost = DataCategories_ViewMost(dataCourse_ViewMost);
+  const _dataCategories_Search = DataCategories_Search(dataCoure_Search);
 
   return (
     <div className="">
@@ -123,10 +172,62 @@ const LayoutCategory = () => {
 
       <div className="grid my-3 mx-5"> 
         <div className="col-8">
-          <ContentPost groupedData={_dataCategories_Content} />
-          <div className='mt-5' >
-            <PaginationComponent/>
+          { contentSearch.trim() === '' ? (
+            <div>
+              <ContentPost groupedData={_dataCategories_Content} />
+              <div className='mt-5'>
+                <PaginationComponent />
+              </div>
+            </div>
+          ) : notFound ? (
+            <div>
+            { isClose ? (
+              <div>
+                <div className="w-full d-flex mb-3 pl-5 pr-2" style={{ backgroundColor: '#F2F2F2'}}>
+                  <h6 className='fw-normal mt-2'>Search result: </h6>
+                  <h6 className='ml-5 mt-2'>{contentSearch}</h6>
+                  <button 
+                    className="px-2 my-1 ml-auto shadow-sm" 
+                    style={{ border: 'none', backgroundColor: 'white' }}
+                    onClick={() => CloseResultSearch()}
+                  >
+                    <FontAwesomeIcon icon={faX} />
+                  </button>
+                </div>
+                <div className='d-flex justify-content-center align-items-center'>
+                  <h3 className='mt-5'>Not found anything!</h3>
+                </div>               
+              </div>
+            ) : (
+              <div>
+                <ContentPost groupedData={_dataCategories_Search} />
+              </div>
+            )}
           </div>
+          ) : (
+            <div>
+              { isClose ? (
+                <div>
+                  <div className="w-full d-flex mb-3 pl-5 pr-2" style={{ backgroundColor: '#F2F2F2'}}>
+                    <h6 className='fw-normal mt-2'>Search result: </h6>
+                    <h6 className='ml-5 mt-2'>{contentSearch}</h6>
+                    <button 
+                      className="px-2 my-1 ml-auto shadow-sm" 
+                      style={{ border: 'none', backgroundColor: 'white' }}
+                      onClick={() => CloseResultSearch()}
+                    >
+                      <FontAwesomeIcon icon={faX} />
+                    </button>
+                  </div>
+                  <ContentPost groupedData={_dataCategories_Search} />                  
+                </div>
+              ) : (
+                <div>
+                  <ContentPost groupedData={_dataCategories_Search} />
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         <div className="col-4">

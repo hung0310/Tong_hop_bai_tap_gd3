@@ -62,3 +62,15 @@ export const DataCategories_ViewMost = (data) => {
         title: item.title
     }));
 };
+
+// ------------------ContentSearch--------------------
+
+export const DataCategories_Search = (data) => {
+    return data.map(item => ({
+        imageTitle: base_url_image + item.image_title.image,
+        title: item.title,
+        subTitle: item.subtitle, 
+        claps: item.claps,
+        views: item.views
+    }));
+};
