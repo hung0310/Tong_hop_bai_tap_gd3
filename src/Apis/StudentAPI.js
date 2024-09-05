@@ -36,3 +36,7 @@ export const GetData_Course_Category = () => {
 export const GetData_ViewMost = () => {
     return method_axios.GetView_Most(url.blog_post_get_view_most);
 };  
+
+export const Patch_Increase_Claps = (id) => {
+    return method_axios.Patch_Increase_Claps(url.blog_post_increase_claps, id); 
+}

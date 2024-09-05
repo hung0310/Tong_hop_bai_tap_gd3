@@ -100,3 +100,13 @@ export const GetView_Most = async (blog_view_most) => {
         throw error;
     } 
 }; 
+
+export const Patch_Increase_Claps = async (increase_claps, id_blog) => {
+    try {
+        await axios.patch(`${increase_claps}/`, {
+            id: id_blog
+        });
+    } catch(error) {
+        throw error;
+    } 
+}

@@ -15,12 +15,12 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import { ToastProvider } from "./hooks/ToastProvider";
-import LayoutCategory from './pages/BaiTap69/LayoutCategory';
+import LayoutCategory from './pages/BaiTap70/LayoutCategory';
 // import { Toast } from 'primereact/toast';
 // import Store from "./pages/BaiTap45/Store";
 import ScrollToTop from "react-scroll-to-top";
 import LoginForm from "./pages/BaiTap58/LoginForm";
-import Store from "./pages/BaiTap69/store/store";
+import Store from "./pages/BaiTap70/store/store";
 // import AxiosReact from './pages/BaiTap52/AxiosReact';
 import LayoutFrontend from "./components/LayoutFrontend";
 import Search from "./pages/BaiTap64/Search";
@@ -52,6 +52,7 @@ import ToastReact from "./pages/BaiTap46/ToastReact";
 import LayoutBackend from "./components/LayoutBackend";
 import AxiosReact from "./pages/BaiTap61/AxiosReact";
 import SupportForm from "./pages/BaiTap63/SupportForm";
+import PostSignIn from "./pages/TestAxios/PostSignIn";
 import Component_Parent from "./pages/BaiTap10/Component_Parent";
 // import Dashboard from "./pages/BaiTap19/Dashboard";
 // import Profile from "./pages/BaiTap19/Profile";
@@ -183,6 +184,8 @@ function App() {
               {/* <Route path='/' element={<Navbar />} /> */}
 
               <Route path='/' element={<LayoutCategory />} />
+
+              {/* <Route path='/' element={<PostSignIn />} /> */}
 
             </Routes>
             <ScrollToTop smooth />

@@ -29,7 +29,6 @@ const PopupAddStudent = ({ isOpen, onClose }) => {
             <AddStudent />
         </div>        
     </Popup>
-
   );
 }
 
