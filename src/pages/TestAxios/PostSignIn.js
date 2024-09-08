@@ -1,60 +1,45 @@
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useState } from 'react';
 
-const PostSignIn = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
-    const [responseMessage, setResponseMessage] = useState('');
+const Profile = () => {
+  const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    const handleRegister = async (e) => {
-        e.preventDefault();
-
-        try {
-            const response = await axios.post('http://47.129.231.55/auth/register/', {
-                username: username,
-                password: password,
-                email: email
-            });
-
-            if (response.status === 201) {
-                setResponseMessage("Account created successfully. Tokens: " + JSON.stringify(response.data.tokens));
-            }
-        } catch (error) {
-            if (error.response && error.response.status === 400) {
-                setResponseMessage("Account creation failed or server error.");
-            } else {
-                setResponseMessage("An error occurred: " + error.message);
-            }
-        }
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await axios.get('http://47.129.231.55/auth/profile/', {
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1NjM3NzcyLCJpYXQiOjE3MjU2MzU5NzIsImp0aSI6ImUzNmJmOGNkN2E4MjRhMGFiYmJlMzMyM2VmMGJjNWU0IiwidXNlcl9pZCI6MTI2fQ.xFuB5-bB5u3KAGlHRGM0gDiKZWQt2uAI85xoBna_tCs`
+          }
+        });
+        setProfile(response.data);
+        setLoading(false);
+      } catch (error) {
+        setError('Failed to fetch profile');
+        setLoading(false);
+      }
     };
 
-    return (
-        <div>Hello
-        <form onSubmit={handleRegister}>
-            <input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-            />
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <button type="submit">Register</button>
-            <p>{responseMessage}</p>
-        </form>
+    fetchProfile();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+
+  return (
+    <div>
+      <h1>Profile</h1>
+      {profile && (
+        <div>
+          <p><strong>Full Name:</strong> {profile.full_name}</p>
+          <p><strong>Gender:</strong> {profile.gender ? 'Male' : 'Female'}</p>
+          <p><strong>Phone Number:</strong> {profile.phone_number}</p>
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
-export default PostSignIn;
+export default Profile;
