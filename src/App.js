@@ -57,6 +57,7 @@ import PostSignIn from "./pages/TestAxios/PostSignIn";
 import Component_Parent from "./pages/BaiTap10/Component_Parent";
 import Layout from "./pages/BaiTap71/Layout";
 import Parent from "./pages/BaiTap72/Parent";
+import DemoUseMemo from "./pages/BaiTap73/DemoUseMemo";
 // import Dashboard from "./pages/BaiTap19/Dashboard";
 // import Profile from "./pages/BaiTap19/Profile";
 // import NotFound from "./pages/BaiTap20/NotFound";
@@ -193,7 +194,9 @@ function App() {
 
               {/* <Route path='/' element={<Layout />} /> */}
 
-              <Route path='/' element={<Parent />} />
+              {/* <Route path='/' element={<Parent />} /> */}
+
+              <Route path='/' element={<DemoUseMemo />} />
 
             </Routes>
             <ScrollToTop smooth />
