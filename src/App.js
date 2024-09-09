@@ -56,6 +56,7 @@ import SupportForm from "./pages/BaiTap63/SupportForm";
 import PostSignIn from "./pages/TestAxios/PostSignIn";
 import Component_Parent from "./pages/BaiTap10/Component_Parent";
 import Layout from "./pages/BaiTap71/Layout";
+import Parent from "./pages/BaiTap72/Parent";
 // import Dashboard from "./pages/BaiTap19/Dashboard";
 // import Profile from "./pages/BaiTap19/Profile";
 // import NotFound from "./pages/BaiTap20/NotFound";
@@ -189,7 +190,10 @@ function App() {
               {/* <Route path='/' element={<LayoutCategory />} /> */}
 
               {/* <Route path='/' element={<PostSignIn />} /> */}
-              <Route path='/' element={<Layout />} />
+
+              {/* <Route path='/' element={<Layout />} /> */}
+
+              <Route path='/' element={<Parent />} />
 
             </Routes>
             <ScrollToTop smooth />
